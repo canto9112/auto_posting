@@ -84,11 +84,35 @@ pip3 install -r requirements.txt
         ```
         FACEBOOK_TOKEN='EAAHYcXgwbHkBAMxgltQwcktwUrcf6lJwgU9oJHmU7tCJZA4VfR7EVQ4cvfq08Humcu7E5xTh7
         ```
-     
+
+#### Настройки GOOGLE Таблицы
+1. Создать Гугл таблицу и вставить id таблицы в файл ```.env```:
+    ```
+    GOOGLE_SHEET_ID='1pdTOD7XDU2udLZXADKj-V6ElW7WUNLSA4kU_JqvUKhI'
+    ```
+2. Создать новый проект в [Google console](https://console.cloud.google.com/);
+3. Search product and resource -> Drive Activity API -> ENABLE;
+4. Search product and resource -> Google Sheets API -> ENABLE;
+5. Создать сервисный аккаунт -> Выбрать роль Project -> Editor;
+6. Создать ключ: Service account -> KEYS -> ADD KEY -> Create new kew -> json
+7. Сохранить полученный файл json в директорию проекта;
+8. Вставить название файла в файл ```.env```:
+   ```
+   GOOGLE_CONFIG_FILE='google_config.json'
+   ```
+8. Дать доступ в гугл таблице на E-mail сервисного аккаунта;
+9. На первом листе заполнить столбцы:
+
+     | A                     | B                     | C            | D              | 
+     | --------------------- |:---------------------:|:------------:|:--------------:|
+    1| Текст первого поста   | Ссылка на картинку 1  |   пусто      |   пусто        |   
+    2| Текст второго поста   | Ссылка на картинку 2  |   пусто      |   пусто        |         
+    3| Текст третьего поста  | Ссылка на картинку 3  |   пусто      |   пусто        |    
+
 ### Запуск скрипта
 Для запуска бота вам необходимо запустить командную строку и перейти в каталог со скриптом:
 ```
->>> python3 main.py 
+>>> python3 main.py 3 (где 3 - это номер строки где в А1 - текст, в В1 - ссылка на картинку)
 ```
 
 ### Цели проекта
