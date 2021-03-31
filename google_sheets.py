@@ -10,6 +10,7 @@ def get_text_and_imagename(post_number, config_file, sheet_id):
   text,  url_image = result
 
   response = requests.get(url_image)
+  response.raise_for_status()
   image_name = f'pic{post_number}.jpg'
 
   with open(image_name, 'wb') as file:
