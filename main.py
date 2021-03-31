@@ -14,7 +14,7 @@ def delete_image(image_name):
     os.remove(path)
 
 
-def get_args():
+def get_line_number():
     parser = argparse.ArgumentParser(
         description=''
     )
@@ -29,7 +29,7 @@ def main():
 
     vk_token = env('VK_USER_TOKEN')
     vk_group_id = int(env('VK_GROUP_ID'))
-    vk_album_id = int(env('VK_ALBOUM_ID'))
+    vk_album_id = env('VK_ALBOUM_ID')
 
     telegram_token = env('TELEGRAM_BOT_TOKEN')
     telegram_chanal_name = env('TELEGRAM_CHANAL_NAME')
@@ -40,9 +40,9 @@ def main():
     google_config_file = env('GOOGLE_CONFIG_FILE')
     google_sheet_id = env('GOOGLE_SHEET_ID')
 
-    sheet_number_str = get_args()
+    line_number = get_line_number()
 
-    text, image = google_sheets.get_text_and_imagename(sheet_number_str, google_config_file, google_sheet_id)
+    text, image = google_sheets.get_text_and_imagename(line_number, google_config_file, google_sheet_id)
 
     vk_bot.upload_image_alboum(vk_token, image, vk_album_id, vk_group_id, text)
     telegram_bot.upload_post_to_chanal(telegram_token, telegram_chanal_name, text, image)
