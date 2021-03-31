@@ -4,9 +4,8 @@ import requests
 
 def get_text_and_imagename(post_number, config_file, sheet_id):
   service_account = gspread.service_account(filename=config_file)
-  spred_sheet = service_account.open_by_key(sheet_id)
-
-  worksheet = spred_sheet.sheet1
+  spread_sheet = service_account.open_by_key(sheet_id)
+  worksheet = spread_sheet.sheet1
   result = worksheet.row_values(post_number)
   text,  url_image = result
 
