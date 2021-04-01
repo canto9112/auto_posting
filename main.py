@@ -48,8 +48,6 @@ def main():
         vk_bot.upload_image_alboum(vk_token, image, vk_album_id, vk_group_id, text)
         telegram_bot.upload_post_to_chanal(telegram_token, telegram_chanal_name, text, image)
         facebook_bot.posting_post(facebook_token, text, facebook_group_id, image)
-    except ValueError:
-        text, image = google_sheets.get_text_and_imagename(line_number, google_config_file, google_sheet_id)
     finally:
         delete_image(image)
 
